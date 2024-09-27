@@ -1,0 +1,33 @@
+:root{
+  --text:#1E293B;
+  --secondary-text: #64748B;
+  --iverse-text: #FFFFFF;
+  --info-text: #0EA5E9;
+  --primary-text: #3B82F6;
+  --danger-text: #EF4444;
+
+  --primary: #3B82F6;
+  --primary-active:#1D4ED8;
+  --primary-hover:#2563eb;
+  --primary-transparent: #EFF6FF;
+  --hover-background: #F1F5F9;
+
+  --background:#FFFFFF;
+  --background-hover-active: #f1f5f9;
+  --surfaces-border: #E2E8F0;
+  --forms-border: #CBD5E1;
+
+  --font-small-normal: 400 14px / 20px "Inter", sans-serif;
+  --font-small-medium: 500 14px / 20px "Inter", sans-serif;
+  --font-regular-normal: 400 16px / 24px "Inter", sans-serif;
+  --font-regular-medium: 500 16px / 24px "Inter", sans-serif;
+  --font-regular-bold: 600 16px / 24px "Inter", sans-serif;
+  --font-medium-normal: 400 18px / 24px "Inter", sans-serif;
+  --font-medium-medium: 500 18px / 24px "Inter", sans-serif;
+  --font-medium-bold: 600 18px / 24px "Inter", sans-serif;
+  --font-h5: 400 20px / 28px "Inter", sans-serif;
+  --font-h4: 600 24px / 32px "Inter", sans-serif;
+  --font-h3: 400 30px / 36px "Inter", sans-serif;
+  --font-h2: 600 30px / 36px "Inter", sans-serif;
+  --font-h1: 700 30px / 36px "Inter", sans-serif;
+}

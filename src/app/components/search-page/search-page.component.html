@@ -1,0 +1,8 @@
+<h4>Результаты поиска: {{currentSearch}}</h4>
+<ul class="main-page-content">
+  @for (product of products$ | async; track product.id) {
+    <li>
+      <app-card [product] = 'product'></app-card>
+    </li>
+  } @empty{Товаров соответствующих запросу "{{currentSearch}}" не найдено}
+</ul>

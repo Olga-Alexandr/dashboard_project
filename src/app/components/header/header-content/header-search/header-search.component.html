@@ -1,0 +1,7 @@
+<form class="header-content-select-search">
+  <input type="text" placeholder="Поиск по объявлениям" id="inputSearch" [(ngModel)]="searchItem" [ngModelOptions]="{standalone: true}">
+  <button id="button-header-search" [routerLink]="['/search']" (click)="searchOn()">
+      Найти
+      <span class="pi pi-search"></span>
+  </button>
+</form>

@@ -1,0 +1,12 @@
+h4{
+  padding-bottom: 24px;
+  color: var(--text);
+  font: var(--font-h4);
+}
+
+.main-page-content{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  row-gap: 32px;
+}

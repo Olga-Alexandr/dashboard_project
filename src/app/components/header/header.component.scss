@@ -1,0 +1,9 @@
+:host{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  background: var(--background);
+  border-bottom: 1px solid var(--surfaces-border);
+}
