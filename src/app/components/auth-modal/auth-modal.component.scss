@@ -1,0 +1,19 @@
+:host{
+  width: 416px;
+}
+header{
+  display: flex;
+  justify-content: space-between;
+  padding: 24px;
+  align-items: center;
+  color: var(--text);
+  & h4{
+    font: var(--font-h4);
+  }
+  & span{
+    font: var(--font-regular-normal);
+    transform: rotate(45deg);//повторить при клике
+    cursor: pointer;    
+  }
+
+}

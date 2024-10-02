@@ -2,3 +2,9 @@
   max-width: 1296px;
   margin: 0 auto;
 }
+
+h4{
+  padding-bottom: 24px;
+  color: var(--text);
+  font: var(--font-h4);
+}

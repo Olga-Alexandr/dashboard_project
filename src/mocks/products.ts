@@ -13,4 +13,10 @@ export const products$ = of ([
   {id: 10, imgs: ["img/girl.jpg", "img/gitara.jpg"], name: 'Гитара Fender', price: 20000, address: 'Москва, Ленинский проспект', dateCreate: 'Сегодня 14:12'},
   {id: 11, imgs: ["img/gitara.jpg", "img/girl.jpg"], name: 'Гитара', price: 20000, address: 'Москва, Ленинский проспект', dateCreate: 'Сегодня 14:12'},
   {id: 12, imgs: ["img/girl.jpg", "img/gitara.jpg"], name: 'Гитара Fender', price: 20000, address: 'Москва, Ленинский проспект', dateCreate: 'Сегодня 14:12'},
+  {id: 13, imgs: ["img/gitara.jpg", "img/girl.jpg"], name: 'Гитара', price: 20000, address: 'Москва, Ленинский проспект', dateCreate: 'Сегодня 14:12'},
+  {id: 14, imgs: ["img/girl.jpg", "img/gitara.jpg"], name: 'Гитара Fender', price: 20000, address: 'Москва, Ленинский проспект', dateCreate: 'Сегодня 14:12'},
+  {id: 15, imgs: ["img/gitara.jpg", "img/girl.jpg"], name: 'Гитара', price: 20000, address: 'Москва, Ленинский проспект', dateCreate: 'Сегодня 14:12'},
+  {id: 16, imgs: ["img/girl.jpg", "img/gitara.jpg"], name: 'Гитара', price: 20000, address: 'Москва, Ленинский проспект', dateCreate: 'Сегодня 14:12'},
+  {id: 17, imgs: ["img/girl.jpg", "img/gitara.jpg"], name: 'Гитара Fender', price: 20000, address: 'Москва, Ленинский проспект', dateCreate: 'Сегодня 14:12'},
+  {id: 18, imgs: ["img/girl.jpg", "img/gitara.jpg"], name: 'Гитара Fender', price: 20000, address: 'Москва, Ленинский проспект', dateCreate: 'Сегодня 14:12'},
 ])

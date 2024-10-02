@@ -1,8 +1,2 @@
 <h4>Рекомендации для вас</h4>
-<ul class="main-page-content">
-  @for (product of products$ | async; track product.id) {
-    <li>
-      <app-card [product] = 'product'></app-card>
-    </li>
-  }
-</ul>
+<app-cards-container></app-cards-container>

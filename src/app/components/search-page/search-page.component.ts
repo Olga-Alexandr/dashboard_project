@@ -7,11 +7,16 @@ import { map, takeUntil } from 'rxjs/operators';
 import { FormsModule } from '@angular/forms';
 import { Subject } from 'rxjs/internal/Subject';
 import { products$ } from '../../../mocks/products';
+import { Observable } from 'rxjs/internal/Observable';
+import { Product } from '../../interfaces/product';
+import { CardsContainerComponent } from '../cards-container/cards-container.component';
+import { ButtonComponent } from '../button/button.component';
+import { CategoriesLightComponent } from './categories-light/categories-light.component';
 
 @Component({
   selector: 'app-search-page',
   standalone: true,
-  imports: [CardComponent, AsyncPipe, FormsModule],
+  imports: [CardsContainerComponent, CardComponent, AsyncPipe, FormsModule, ButtonComponent, CategoriesLightComponent],
   templateUrl: './search-page.component.html',
   styleUrl: './search-page.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -19,9 +24,7 @@ import { products$ } from '../../../mocks/products';
 export class SearchPageComponent implements OnInit, OnDestroy {
   currentSearch: string = '';
   private destroy$ = new Subject<void>();
-  products$ = products$.pipe(
-    map(products => products.filter(product => product.name === this.currentSearchService.get()))
-  );
+  public products$!: Observable<Product[]>;
   
   constructor(
     private currentSearchService: CurrentSearchService, 

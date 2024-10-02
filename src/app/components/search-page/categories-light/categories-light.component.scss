@@ -1,0 +1,23 @@
+ul{
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 7px 0;
+  font: var(--font-regular-normal);
+  color: var(--primary-text);
+  cursor: pointer;
+  transition: 0.3s;
+  & ul {
+   display: none;
+ }
+ & li >ul{
+  padding: 7px 0 7px 32px;
+  transition: 0.3s;
+ }
+ & li:hover > ul {
+   display: flex;
+  }
+  & li:hover > span{
+   transform: rotate(90deg);
+  }
+}

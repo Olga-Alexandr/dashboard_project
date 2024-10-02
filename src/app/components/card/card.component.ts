@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input } from '@angular/core';
 import { CurrentSearchService } from '../../service/current-search.service';
 import { RouterLink } from '@angular/router';
+import { Product } from '../../interfaces/product';
 
 @Component({
   selector: 'app-card',
@@ -11,7 +12,7 @@ import { RouterLink } from '@angular/router';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CardComponent {
-  @Input() product: { id: number; imgs: string[]; name: string; price: number; address: string; dateCreate: string } = {
+  @Input() product: Product = {
     id: 0,
     imgs: ["../../../../public/img/x_blue.svg"],
     name: '',
@@ -30,8 +31,8 @@ export class CardComponent {
   }
 
   clickName(event: Event, name: string): void {
-    event.stopPropagation(); // Stop click
-    console.log('Clicked name:', name);
+    event.stopPropagation(); // Stop click on this element
+    // console.log('Clicked name:', name);
     this.currentSearchService.set(name);
   }
 }

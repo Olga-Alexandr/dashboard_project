@@ -1,8 +1,36 @@
-<h4>Результаты поиска: {{currentSearch}}</h4>
-<ul class="main-page-content">
-  @for (product of products$ | async; track product.id) {
-    <li>
-      <app-card [product] = 'product'></app-card>
-    </li>
-  } @empty{Товаров соответствующих запросу "{{currentSearch}}" не найдено}
-</ul>
+<h4>Объявления по запросу «{{currentSearch}}»</h4>
+<div class="search">
+  <div class = "search-parametres">
+    <h6>Все категории</h6>
+    <app-categories-light></app-categories-light>
+    <form action="#">
+      <p>Цена</p>
+      <div class="input-block">
+        <input #minPrice type="number" placeholder="Цена от" min="0">
+        <input #maxPrice type="number" placeholder="до, руб." min="0">
+      </div>
+      <app-button label="Показать объявления" colorClass = "color-blue" max-width = "306px" fontStyle = 'var(--font-regular-normal)'></app-button>
+    </form>
+  </div>
+  <div class="search-content">
+    <div class="search-content-info">
+      <!-- заменить на количество -->
+      <p>Всего найдено {{currentSearch}} объявления</p>
+      <form action="#">
+        <label>Сортировка по</label>
+        <select type="text">
+          <option value="new">Новизне</option>
+          <option value="price">Цене</option>
+        </select>
+      </form>
+    </div>
+    <ul class="search-content-cards">
+      @for (product of products$ | async; track product.id) {
+        <li>
+          <app-card [product] = 'product'></app-card>
+        </li>
+      } @empty{Товаров соответствующих запросу не найдено}
+    </ul>  
+  </div> 
+</div>
+
