@@ -28,7 +28,13 @@
         border-radius: 4px;
         padding: 8px 12px;
         font: var(--font-regular-normal);
-        color: var(--secondary-text);
+        color: var(--text);
+        &:hover{
+          border-color: var(--primary);
+        }
+        &::placeholder{
+          color: var(--secondary-text);
+        }
       }
     }
   }
@@ -57,6 +63,10 @@
         font: var(--font-regular-normal);
         cursor: pointer;
         // appearance: none;
+        color: var(--text);
+        &:hover{
+          border-color: var(--primary);
+        }
       }
     }
     &-cards{

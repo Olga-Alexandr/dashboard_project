@@ -1,12 +1,18 @@
 <header>
   <h4>Авторизация</h4>
-  <span (click)="close">+</span>
+  <span class="pi pi-times" (click)="close()"></span>
 </header>
 <form action="#">
-  <input type="tel" placeholder="Номер телефона">
-  <input type="password" placeholder="Пароль">
-  <input type="checkbox" aria-label="Запомнить меня">
-  <p>Забыли пароль?</p>
-  <app-button label="Войти" fontStyle = 'var(--font-regular-normal)'></app-button>
+  <div class="fields">
+    <input type="tel" placeholder="Номер телефона">
+    <div class="fields-pass">
+      <input type="password" placeholder="Пароль">
+      <div class="fields-pass-add">
+        <label for=""><input type="checkbox"> Запомнить меня</label> 
+        <p>Забыли пароль?</p>
+      </div>
+    </div>
+  </div>
+  <app-button label="Войти" fontStyle = 'var(--font-regular-normal)' padding="12px 40px" maxWidth="max-content"></app-button>
 </form>
 

@@ -8,3 +8,7 @@ h4{
   color: var(--text);
   font: var(--font-h4);
 }
+
+.hidden{
+  display: none;
+}

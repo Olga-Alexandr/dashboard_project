@@ -26,20 +26,6 @@ form{
   align-items: center;
   width: 100%;
   gap: 16px;
-  &-pass{
-    display: flex;
-    flex-direction: column;
-    width: inherit;
-    gap: 8px;
-    &-add{
-      display: flex;
-      justify-content: space-between;
-      & p{
-        color: var(--primary);
-        cursor: pointer;
-      }
-    }
-  }
 }
 input{
   width: inherit;
