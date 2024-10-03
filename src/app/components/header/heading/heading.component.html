@@ -3,8 +3,8 @@
     @if (userRole.getUserRole() === 'guest') {
       <app-button label="Войти" (click)="showNav()" iconLeft="pi pi-user" colorClass = "color-none" padding = "8px 0" gap = "8px" max-width = "70px" fontStyle = 'var(--font-small-normal)'></app-button>
       <nav class="entry hidden" (click)="showNav()">
-        <p value="signup">Регистрация</p>
-        <p (click)="login()" value="login">Авторизация</p>
+        <p (click)="showDialog('signup')" value="signup">Регистрация</p>
+        <p (click)="showDialog('login')" value="login">Авторизация</p>
       </nav>
     } @else {
         <app-button label="{{userName}}" (click)="showNav()" iconLeft="pi pi-user" iconRight="pi pi-angle-down" colorClass = "color-none" padding = "8px 0" gap = "8px" max-width = "70px" fontStyle = 'var(--font-small-normal)'></app-button>
@@ -17,7 +17,7 @@
   </div>
   <app-button label="Новое объявление" iconRight="pi pi-plus" padding = "6px 12px" max-width = "179px"></app-button>
 </div>
-<app-modal-full class="hidden">
+<app-modal-full>
   <app-auth-modal class="hidden"></app-auth-modal>
-  <app-reg-modal></app-reg-modal>
+  <app-reg-modal class="hidden"></app-reg-modal>
 </app-modal-full>

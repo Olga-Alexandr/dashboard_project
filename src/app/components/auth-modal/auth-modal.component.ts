@@ -10,7 +10,15 @@ import { ButtonComponent } from '../button/button.component';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AuthModalComponent {
-  close(): void {
+  
+  closeForm(selectors:string[]): void {
+    selectors.forEach(selector => this.close(selector));
+  }
 
+  close(selector:string): void {
+    const elem = document.querySelector(selector);
+    if (elem) {
+      elem.classList.toggle('hidden');
+    }
   }
 }

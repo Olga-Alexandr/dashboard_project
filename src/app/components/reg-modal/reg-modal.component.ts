@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ButtonComponent } from '../button/button.component';
+import { ToggleHiddenService } from '../../service/toggle-hidden.service';
 
 @Component({
   selector: 'app-reg-modal',
@@ -10,10 +11,19 @@ import { ButtonComponent } from '../button/button.component';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class RegModalComponent {
-  close(): void {
-    const modalWindow = document.querySelector('.modal-window');
-    if (modalWindow) {
-      modalWindow.classList.toggle('hidden');
+
+  constructor(private toggleHiddenService:ToggleHiddenService){}
+  
+  // toggleHiddenService.trigger('.modal-window')
+
+  closeForm(selectors:string[]): void {
+    selectors.forEach(selector => this.close(selector));
+  }
+
+  close(selector:string): void {
+    const elem = document.querySelector(selector);
+    if (elem) {
+      elem.classList.toggle('hidden');
     }
   }
 }

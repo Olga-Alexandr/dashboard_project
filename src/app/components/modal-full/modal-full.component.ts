@@ -1,11 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { AuthModalComponent } from '../auth-modal/auth-modal.component';
-import { RegModalComponent } from '../reg-modal/reg-modal.component';
 
 @Component({
   selector: 'app-modal-full',
   standalone: true,
-  imports: [AuthModalComponent, RegModalComponent],
+  imports: [],
   templateUrl: './modal-full.component.html',
   styleUrl: './modal-full.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -13,8 +11,16 @@ import { RegModalComponent } from '../reg-modal/reg-modal.component';
 export class ModalFullComponent {
   closeModal(event: Event){
     const modalWindow = document.querySelector('.modal-window');
+    const authModal = document.querySelector('app-auth-modal');
+    const regModal = document.querySelector('app-reg-modal');
     if (event.target === modalWindow && modalWindow) {
       modalWindow.classList.toggle('hidden');
+      if (authModal && !authModal.classList.contains('hidden')) {
+        authModal.classList.toggle('hidden');
+      } 
+      if (regModal && !regModal.classList.contains('hidden')) {
+        regModal.classList.toggle('hidden');
+      } 
     }
   }
 }

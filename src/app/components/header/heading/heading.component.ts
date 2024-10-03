@@ -18,22 +18,44 @@ export class HeadingComponent {
   // userRole: 'guest' | 'user' | 'admin' = 'user'; //получатьтекущее значение
   userName = 'user.name';//получатьтекущее значение
 
+  
+  close(selector:string): void {
+    const elem = document.querySelector(selector);
+    if (elem) {
+      elem.classList.toggle('hidden');
+    }
+  }
+
   showNav(){
+    // this.close('nav');//don't worke
     const nav = document.querySelector('nav');
     if (nav) {
       nav.classList.toggle('hidden');
     }
   }
 
-  login(){
-    this.userRole.setUserRole('user');
-    const modalWindow = document.querySelector('app-modal-full');
+  showDialog(value:string):void{
+    // this.close('app-modal-full');
+    const modalWindow = document.querySelector('.modal-window');
     if (modalWindow) {
       modalWindow.classList.toggle('hidden');
     }
-    // this.showNav;
+    if(value==="login"){
+      this.userRole.setUserRole('user');//change on TODO
+      // this.close('app-auth-modal');
+      const authModal=document.querySelector('app-auth-modal');
+      if(authModal){
+        authModal.classList.toggle('hidden');
+      }
+    }
+    if(value==="signup"){
+      // this.close('app-auth-modal');
+      const regModal=document.querySelector('app-reg-modal');
+      if(regModal){
+        regModal.classList.toggle('hidden');
+      }
+    }
   }
-
 }
 
 
