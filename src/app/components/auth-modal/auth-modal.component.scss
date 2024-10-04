@@ -54,4 +54,15 @@ input{
   &::placeholder{
     color: var(--secondary-text);
   }
+  &.ng-touched.ng-invalid{
+    border-color: var(--danger-text);
+  }
+}
+.input-message{
+  margin-top: -16px;
+  font: var(--font-small-normal);
+  color: var(--secondary-text);
+}
+.error{
+  color: var(--danger-text);
 }
