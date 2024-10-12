@@ -8,7 +8,7 @@ header{
   color: var(--text);
   & span{
     padding-bottom: 24px;
-    cursor: pointer;    
+    cursor: pointer;
   }
 }
 form{
@@ -18,7 +18,7 @@ form{
   gap: 24px;
   font: var(--font-regular-normal);
   color: var(--text);
-  
+
 }
 .fields{
   display: flex;
@@ -63,6 +63,11 @@ input{
   font: var(--font-small-normal);
   color: var(--secondary-text);
 }
+.hint-pwd{
+  margin-top: -8px;
+}
+
 .error{
   color: var(--danger-text);
+  display: visible;
 }

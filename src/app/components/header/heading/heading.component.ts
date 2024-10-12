@@ -1,9 +1,9 @@
-import { UserRoleService } from './../../../service/user-role.service';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
 import { ButtonComponent } from "../../button/button.component";
 import { AuthModalComponent } from '../../auth-modal/auth-modal.component';
 import { ModalFullComponent } from '../../modal-full/modal-full.component';
 import { RegModalComponent } from '../../reg-modal/reg-modal.component';
+import { AuthService } from '../../../service/auth.service';
 
 @Component({
   selector: 'app-heading',
@@ -14,12 +14,18 @@ import { RegModalComponent } from '../../reg-modal/reg-modal.component';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeadingComponent {
-  userRole = new UserRoleService;
-  // userRole: 'guest' | 'user' | 'admin' = 'user'; //получатьтекущее значение
-  userName = 'user.name';//получатьтекущее значение
+  // userRole = new UserRoleService;
 
-  
-  close(selector:string): void {
+  userRole: 'guest' | 'user' | 'admin' = 'guest'; //получатьтекущее значение
+  userName = 'user.name';//получатьтекущее значение
+  // constructor(@Inject(AuthService) private authService = new AuthService){
+    // user:{
+    //   "login": "string",
+    //   "password": "string",
+    // }
+  // }
+
+  toggleHidden(selector:string): void {
     const elem = document.querySelector(selector);
     // console.log(elem, selector);
     if (elem) {
@@ -27,18 +33,18 @@ export class HeadingComponent {
     }
   }
 
-  showNav(){
-    this.close('nav');
-  }
+  // showNav(){
+  //   this.toggleHidden('nav');
+  // }
 
   showDialog(value:string):void{
-    this.close('.modal-window');
+    this.toggleHidden('.modal-window');
     if(value==="login"){
-      this.userRole.setUserRole('user');//change on TODO
-      this.close('app-auth-modal');
+      // this.userRole.setUserRole('user');//change on TODO
+      this.toggleHidden('app-auth-modal');
     }
     if(value==="signup"){
-      this.close('app-reg-modal');
+      this.toggleHidden('app-reg-modal');
     }
   }
 }

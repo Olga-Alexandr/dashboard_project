@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component} from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { FormsModule} from '@angular/forms';
 import { CurrentSearchService } from '../../../../service/current-search.service';
+import { ChangeSearchService } from '../../../../service/change-search.service';
 
 @Component({
   selector: 'app-header-search',
@@ -14,9 +15,9 @@ import { CurrentSearchService } from '../../../../service/current-search.service
 export class HeaderSearchComponent {
   searchItem = '';
 
-  constructor(private currentSearchService: CurrentSearchService){}
+  constructor(private currentSearchService: CurrentSearchService, private changeSearchService: ChangeSearchService){}
 
   searchOn(){
-    this.currentSearchService.set(this.searchItem);
+    this.changeSearchService.set(this.searchItem);
   }
 }

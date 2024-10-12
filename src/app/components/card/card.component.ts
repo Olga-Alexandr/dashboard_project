@@ -2,6 +2,9 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input } from '@a
 import { CurrentSearchService } from '../../service/current-search.service';
 import { RouterLink } from '@angular/router';
 import { Product } from '../../interfaces/product';
+import { Advert } from '../../interfaces/advert';
+import { CurrentCategoryService } from '../../service/current-category.service';
+import { ChangeSearchService } from '../../service/change-search.service';
 
 @Component({
   selector: 'app-card',
@@ -12,16 +15,17 @@ import { Product } from '../../interfaces/product';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CardComponent {
-  @Input() product: Product = {
-    id: 0,
-    imgs: ["../../../../public/img/x_blue.svg"],
+  @Input() product: Advert = {
+    id: '',
     name: '',
-    price: 0,
-    address: '',
-    dateCreate: ''
+    location: '',
+    createdAt: '',
+    isActive: true,
+    imagesIds: ["../../../../public/img/x_blue.svg"],
+    cost: 0
   };
 
-  constructor(private currentSearchService: CurrentSearchService, private cdr: ChangeDetectorRef){
+  constructor(private currentSearchService: CurrentSearchService, private cdr: ChangeDetectorRef, private changeSearchService: ChangeSearchService){
     this.cdr.markForCheck();
   }
 
@@ -32,7 +36,6 @@ export class CardComponent {
 
   clickName(event: Event, name: string): void {
     event.stopPropagation(); // Stop click on this element
-    // console.log('Clicked name:', name);
-    this.currentSearchService.set(name);
+    this.changeSearchService.set(name);
   }
 }

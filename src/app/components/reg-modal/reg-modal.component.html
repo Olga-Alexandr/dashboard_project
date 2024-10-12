@@ -4,17 +4,17 @@
 </header>
 <form [formGroup]="regReactiveForm" (click)="onSubmit()">
   <div class="fields">
-    <input type="tel" placeholder="Номер телефона" formControlName="tel">
-    <div class="input-message" [ngClass]="{'error': isControlInvalid('tel')}">
-      Введите номер в формате +7(или 8)-999-999-99-99. Ставить "-" между цифрами необязательно.
+    <input type="tel" placeholder="Номер телефона" formControlName="login">
+    <div class="input-message" [ngClass]="{'error': isControlInvalid('login')}">
+      Введите номер в формате +7(или 8)-999-999-99-99.
     </div>
     <input type="text" placeholder="Имя" formControlName="name" minlength="4" maxlength="64">
     <div class="input-message" [ngClass]="{'error': isControlInvalid('name')}">
-      Введите от 4-х до 100 символов. Можно использовать только буквы и цифры.
+      Введите от 4-х до 64 символов. Можно использовать только буквы и цифры.
     </div>
-    <input type="password" placeholder="Пароль" formControlName="pwd" minlength="8" maxlength="50">
-    <div class="input-message" [ngClass]="{'error': isControlInvalid('pwd')}">
-      Введите от 6-ти до 20 символов. Можно использовать только латинские буквы и цифры.
+    <input type="password" placeholder="Пароль" formControlName="password" minlength="8" maxlength="50">
+    <div class="input-message" [ngClass]="{'error': isControlInvalid('password')}">
+      Введите от 8-ти до 50 символов. Можно использовать только латинские буквы и цифры.
     </div>
   </div>
   <app-button label="Зарегистрироваться" fontStyle = 'var(--font-regular-normal)' padding="12px 40px" maxWidth="max-content"></app-button>

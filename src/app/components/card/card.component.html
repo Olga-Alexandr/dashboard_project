@@ -1,9 +1,9 @@
 <div (click) = 'clickCard(product.id)' product = "product" [routerLink]="['/product-card']">
-  <img src={{product.imgs[0]}} alt={{product.imgs[0]}}>
+  <img src={{product.imagesIds[0]}} alt={{product.imagesIds[0]}}>
   <div class="card-text">
       <h6 class = "card-text-name" (click) = 'clickName($event, product.name)' [routerLink]="['/search']">{{product.name}}</h6>
-      <p class = "card-text-price">{{product.price}} <span>₽</span></p>
-      <p class = "card-text-address">{{product.address}}</p>
-      <p class = "card-text-date">{{product.dateCreate}}</p>
+      <p class = "card-text-price">{{product.cost}} <span>₽</span></p>
+      <p class = "card-text-address">{{product.location}}</p>
+      <p class = "card-text-date">{{product.createdAt}}</p>
   </div>
 </div>

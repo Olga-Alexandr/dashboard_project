@@ -3,15 +3,15 @@ import { FilterProductsService } from '../../service/filter-products.service';
 import { CardComponent } from '../card/card.component';
 import { AsyncPipe } from '@angular/common';
 import { CurrentSearchService } from '../../service/current-search.service';
-import { map, takeUntil } from 'rxjs/operators';
 import { FormsModule } from '@angular/forms';
 import { Subject } from 'rxjs/internal/Subject';
-import { products$ } from '../../../mocks/products';
 import { Observable } from 'rxjs/internal/Observable';
-import { Product } from '../../interfaces/product';
 import { CardsContainerComponent } from '../cards-container/cards-container.component';
 import { ButtonComponent } from '../button/button.component';
 import { CategoriesLightComponent } from './categories-light/categories-light.component';
+import { Advert } from '../../interfaces/advert';
+import { combineLatestWith, of, switchMap, takeUntil } from 'rxjs';
+import { CurrentCategoryService } from '../../service/current-category.service';
 
 @Component({
   selector: 'app-search-page',
@@ -24,25 +24,31 @@ import { CategoriesLightComponent } from './categories-light/categories-light.co
 export class SearchPageComponent implements OnInit, OnDestroy {
   currentSearch: string = '';
   private destroy$ = new Subject<void>();
-  public products$!: Observable<Product[]>;
-  
+  products$!: Observable<Advert[]>;
+
   constructor(
-    private currentSearchService: CurrentSearchService, 
+    private currentSearchService: CurrentSearchService,
+    private currentCategoryService: CurrentCategoryService,
     private filterProductsService: FilterProductsService,
     private cdr: ChangeDetectorRef
   ){}
 
   ngOnInit(): void {
-    // this.products$ = this.filterProductsService.get();
     this.currentSearchService.currentSearch$
-    .pipe(takeUntil(this.destroy$))
-    .subscribe(value => {
-      this.currentSearch = value;
-      this.products$ = this.filterProductsService.get();
+    .pipe(
+    combineLatestWith(this.currentCategoryService.currentCategory$),
+    takeUntil(this.destroy$),
+    switchMap(([search, category]) => {
+    this.currentSearch = search;
+    return this.filterProductsService.get();
+    })
+    )
+    .subscribe((data: Advert[]) => {
+      this.products$ = of(data);
       this.cdr.markForCheck();
     });
   }
-    
+
   ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();

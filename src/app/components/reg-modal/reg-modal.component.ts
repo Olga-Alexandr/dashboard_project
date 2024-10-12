@@ -14,7 +14,7 @@ import { NgClass } from '@angular/common';
 })
 export class RegModalComponent implements OnInit {
   regReactiveForm!: FormGroup;
- 
+
   constructor(private fb: FormBuilder){}
 
   ngOnInit(){
@@ -28,12 +28,12 @@ export class RegModalComponent implements OnInit {
       Validators.pattern(/^[а-яА-ЯёЁa-zA-Z0-9]+$/)
      ]
     ],
-     tel: ['', [
+     login: ['', [
       Validators.required,
       Validators.pattern(/^(\+7|8)[\- ]?\d{3}[\- ]?[\d\- ]{7,10}$/)
      ]
     ],
-     pwd: ['', [
+     password: ['', [
       Validators.required,
       Validators.pattern(/^[a-zA-Z0-9]+$$/)
      ]
@@ -42,19 +42,19 @@ export class RegModalComponent implements OnInit {
   }
 
   isControlInvalid(controlName: string): boolean {
-    const control = this.regReactiveForm.controls[controlName];    
-    const result = control.invalid && control.touched;    
+    const control = this.regReactiveForm.controls[controlName];
+    const result = control.invalid && control.touched;
     return result;
   }
 
   onSubmit() {
-    const controls = this.regReactiveForm.controls;    
+    const controls = this.regReactiveForm.controls;
     if (this.regReactiveForm.invalid) {
       // mark each cotrols as touched
       Object.keys(controls).forEach(controlName => controls[controlName].markAsTouched());
-      //exit of method 
+      //exit of method
       return;
-    }    
+    }
     //TODO:send data from form
     console.log(this.regReactiveForm.value);
 
@@ -62,10 +62,10 @@ export class RegModalComponent implements OnInit {
   }
 
   closeForm(selectors:string[]): void {
-    selectors.forEach(selector => this.close(selector));
+    selectors.forEach(selector => this.toggleHidden(selector));
   }
 
-  close(selector:string): void {
+  toggleHidden(selector:string): void {
     const elem = document.querySelector(selector);
     if (elem) {
       elem.classList.toggle('hidden');
