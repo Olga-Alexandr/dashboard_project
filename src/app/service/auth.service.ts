@@ -7,7 +7,7 @@ import { DataUser } from '../interfaces/data-user';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://dzitskiy.ru:5000';
+  public apiUrl = 'http://dzitskiy.ru:5000';
   private _http = inject(HttpClient);
   public _headers = new HttpHeaders();
 

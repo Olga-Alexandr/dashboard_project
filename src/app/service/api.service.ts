@@ -7,7 +7,7 @@ import { AdvertCreate } from '../interfaces/advert-create';
   providedIn: 'root'
 })
 export class ApiService {
-
+ 
   constructor(private _httpClient: HttpClient) { }
 
   public getCategories(): Observable<any>{

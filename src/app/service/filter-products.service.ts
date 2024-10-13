@@ -13,11 +13,7 @@ import { HttpClient } from '@angular/common/http';
 export class FilterProductsService {
   private _http = inject(HttpClient);
 
-  // currentSearch = new CurrentSearchService;
-  // filteredProducts$ = products$.pipe(
-  //   map(products => products.filter(product => product.name === this.currentSearch.get()))
-  // );
-  constructor(private currentSearchService: CurrentSearchService, private currentCategoryService: CurrentCategoryService) { }
+    constructor(private currentSearchService: CurrentSearchService, private currentCategoryService: CurrentCategoryService) { }
 
   get(): Observable<Advert[]> {
     return this._http.post<Advert[]>('http://dzitskiy.ru:5000/Advert/search', {
@@ -27,9 +23,4 @@ export class FilterProductsService {
     });
   }
 
-  // get() {
-  //   return products$.pipe(
-  //     map(products => products.filter(product => product.name === this.currentSearchService.get()))
-  //   );
-  // }
 }

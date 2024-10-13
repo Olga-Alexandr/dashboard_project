@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { CardComponent } from '../card/card.component';
 import { AsyncPipe, NgFor } from '@angular/common';
-import { CurrentSearchService } from '../../service/current-search.service';
 import { FilterProductsService } from '../../service/filter-products.service';
 import { Observable, of, Subject } from 'rxjs';
 import { Advert } from '../../interfaces/advert';
@@ -28,16 +27,15 @@ export class CardsContainerComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.changeSearchService.set('');
     this.filterProductsService.get()
-      .subscribe((data: Advert[]) => {
-        this.products$ = of(data);
+      .subscribe((respones: Advert[]) => {
+        this.products$ = of(respones);
         this.cdr.markForCheck();
       });
   }
 
-
   ngOnDestroy(): void {
     this.destroy$.next();
-    // this.destroy$.complete();
+    this.destroy$.complete();
   }
 
 }

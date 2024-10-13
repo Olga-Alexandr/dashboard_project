@@ -1,9 +1,15 @@
-<div (click) = 'clickCard(product.id)' product = "product" [routerLink]="['/product-card']">
-  <img src={{product.imagesIds[0]}} alt={{product.imagesIds[0]}}>
+<div class="card" (click) = 'clickCard(product.id)' product = "product" [routerLink]="['/product-card']">
+  <div class="card-img">
+    @if(product.imagesIds[0]){
+      <img [src]="product.imagesIds[0] | getUrlImg" alt={{product.imagesIds[0]}}>
+      <!-- <img [src]="'http://dzitskiy.ru:5000/Images/' + product.imagesIds[0]" alt={{product.imagesIds[0]}}> -->
+    }@else{
+    }
+  </div>
   <div class="card-text">
       <h6 class = "card-text-name" (click) = 'clickName($event, product.name)' [routerLink]="['/search']">{{product.name}}</h6>
       <p class = "card-text-price">{{product.cost}} <span>₽</span></p>
       <p class = "card-text-address">{{product.location}}</p>
-      <p class = "card-text-date">{{product.createdAt}}</p>
+      <p class = "card-text-date">{{product.createdAt | formatDate}}</p>
   </div>
 </div>

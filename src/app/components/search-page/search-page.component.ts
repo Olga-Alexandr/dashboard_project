@@ -25,6 +25,7 @@ export class SearchPageComponent implements OnInit, OnDestroy {
   currentSearch: string = '';
   private destroy$ = new Subject<void>();
   products$!: Observable<Advert[]>;
+  length = 0;
 
   constructor(
     private currentSearchService: CurrentSearchService,
@@ -43,8 +44,9 @@ export class SearchPageComponent implements OnInit, OnDestroy {
     return this.filterProductsService.get();
     })
     )
-    .subscribe((data: Advert[]) => {
-      this.products$ = of(data);
+    .subscribe((response: Advert[]) => {
+      this.length = response.length;
+      this.products$ = of(response);
       this.cdr.markForCheck();
     });
   }

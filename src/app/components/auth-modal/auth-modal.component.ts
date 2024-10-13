@@ -4,6 +4,7 @@ import { ReactiveFormsModule, FormGroup, FormBuilder, Validators } from '@angula
 import { NgClass } from '@angular/common';
 import { AuthService } from '../../service/auth.service';
 import { tap } from 'rxjs/operators';
+import { ToggleHiddenService } from '../../service/toggle-hidden.service';
 
 
 
@@ -17,9 +18,8 @@ import { tap } from 'rxjs/operators';
 })
 export class AuthModalComponent implements OnInit {
   authReactiveForm!: FormGroup;
-  // private authService!: AuthService;
 
-  constructor(private fb: FormBuilder, private authService: AuthService){}
+  constructor(private fb: FormBuilder, private authService: AuthService, public toggleHiddenService:ToggleHiddenService){}
 
   ngOnInit(){
     this.initForm();
@@ -72,13 +72,7 @@ export class AuthModalComponent implements OnInit {
   }
 
   closeForm(selectors:string[]): void {
-    selectors.forEach(selector => this.toggleHidden(selector));
+    selectors.forEach(selector => this.toggleHiddenService.toggleHidden(selector));
   }
 
-  toggleHidden(selector:string): void {
-    const elem = document.querySelector(selector);
-    if (elem) {
-      elem.classList.toggle('hidden');
-    }
-  }
 }

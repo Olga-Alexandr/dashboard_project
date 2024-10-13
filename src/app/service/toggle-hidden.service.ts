@@ -7,10 +7,11 @@ export class ToggleHiddenService {
 
   constructor() { }
   
-  public trigger(selector: string): void {
-    const modalWindow = document.querySelector(selector);
-    if (modalWindow) {
-      modalWindow.classList.toggle('hidden');
+  toggleHidden(selector:string): void {
+    const elem = document.querySelector(selector);
+    if (elem) {
+      elem.classList.toggle('hidden');
     }
   }
+  
 }

@@ -1,15 +1,14 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input } from '@angular/core';
-import { CurrentSearchService } from '../../service/current-search.service';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { Product } from '../../interfaces/product';
 import { Advert } from '../../interfaces/advert';
-import { CurrentCategoryService } from '../../service/current-category.service';
 import { ChangeSearchService } from '../../service/change-search.service';
+import { FormatDatePipe } from '../../pipes/format-date.pipe';
+import { GetUrlImgPipe } from "../../pipes/get-url-img.pipe";
 
 @Component({
   selector: 'app-card',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, FormatDatePipe, GetUrlImgPipe],
   templateUrl: './card.component.html',
   styleUrl: './card.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -25,9 +24,7 @@ export class CardComponent {
     cost: 0
   };
 
-  constructor(private currentSearchService: CurrentSearchService, private cdr: ChangeDetectorRef, private changeSearchService: ChangeSearchService){
-    this.cdr.markForCheck();
-  }
+  constructor(private changeSearchService: ChangeSearchService){}
 
   clickCard(id:any):void{
     alert('click'+ id);

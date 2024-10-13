@@ -4,6 +4,7 @@ import { AuthModalComponent } from '../../auth-modal/auth-modal.component';
 import { ModalFullComponent } from '../../modal-full/modal-full.component';
 import { RegModalComponent } from '../../reg-modal/reg-modal.component';
 import { AuthService } from '../../../service/auth.service';
+import { ToggleHiddenService } from '../../../service/toggle-hidden.service';
 
 @Component({
   selector: 'app-heading',
@@ -18,33 +19,17 @@ export class HeadingComponent {
 
   userRole: 'guest' | 'user' | 'admin' = 'guest'; //получатьтекущее значение
   userName = 'user.name';//получатьтекущее значение
-  // constructor(@Inject(AuthService) private authService = new AuthService){
-    // user:{
-    //   "login": "string",
-    //   "password": "string",
-    // }
-  // }
-
-  toggleHidden(selector:string): void {
-    const elem = document.querySelector(selector);
-    // console.log(elem, selector);
-    if (elem) {
-      elem.classList.toggle('hidden');
-    }
-  }
-
-  // showNav(){
-  //   this.toggleHidden('nav');
-  // }
+  
+  constructor(public toggleHiddenService:ToggleHiddenService){}
 
   showDialog(value:string):void{
-    this.toggleHidden('.modal-window');
+    this.toggleHiddenService.toggleHidden('.modal-window');
     if(value==="login"){
       // this.userRole.setUserRole('user');//change on TODO
-      this.toggleHidden('app-auth-modal');
+      this.toggleHiddenService.toggleHidden('app-auth-modal');
     }
     if(value==="signup"){
-      this.toggleHidden('app-reg-modal');
+      this.toggleHiddenService.toggleHidden('app-reg-modal');
     }
   }
 }

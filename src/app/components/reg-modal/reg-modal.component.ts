@@ -15,7 +15,7 @@ import { NgClass } from '@angular/common';
 export class RegModalComponent implements OnInit {
   regReactiveForm!: FormGroup;
 
-  constructor(private fb: FormBuilder){}
+  constructor(private fb: FormBuilder, private toggleHiddenService:ToggleHiddenService){}
 
   ngOnInit(){
     this.initForm();
@@ -62,13 +62,13 @@ export class RegModalComponent implements OnInit {
   }
 
   closeForm(selectors:string[]): void {
-    selectors.forEach(selector => this.toggleHidden(selector));
+    selectors.forEach(selector => this.toggleHiddenService.toggleHidden(selector));
   }
 
-  toggleHidden(selector:string): void {
-    const elem = document.querySelector(selector);
-    if (elem) {
-      elem.classList.toggle('hidden');
-    }
-  }
+  // toggleHidden(selector:string): void {
+  //   const elem = document.querySelector(selector);
+  //   if (elem) {
+  //     elem.classList.toggle('hidden');
+  //   }
+  // }
 }
