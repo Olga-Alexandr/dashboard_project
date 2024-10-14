@@ -1,6 +1,6 @@
 <div class="heading-btns wrapper">
   <div class="btn-nav">
-    @if (userRole === 'guest') {
+    @if (!userRole) {
       <app-button label="Войти" (click)="toggleHiddenService.toggleHidden('nav')" iconLeft="pi pi-user" colorClass = "color-none" padding = "8px 0" gap = "8px" max-width = "70px" fontStyle = 'var(--font-small-normal)'></app-button>
       <nav class="entry hidden" (click)="toggleHiddenService.toggleHidden('nav')">
         <p (click)="showDialog('signup')" value="signup">Регистрация</p>
@@ -11,7 +11,7 @@
         <nav class="navPA hidden" (click)="toggleHiddenService.toggleHidden('nav')">
           <p value="myAdds">Мои объявления</p>
           <p value="settings">Настройки</p>
-          <p value="exit">Выход</p>
+          <p value="exit" (click)="authService.logout()">Выход</p>
         </nav>
       }
   </div>

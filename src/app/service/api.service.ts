@@ -17,4 +17,12 @@ export class ApiService {
   public createAdvert(model: AdvertCreate): Observable<any>{
     return this._httpClient.post('http://dzitskiy.ru:5000/Advert', model);
   }
+
+  public regUser(user:{
+    "name": "string",
+    "login": "string",
+    "password": "string"
+  }): Observable<any>{
+    return this._httpClient.post('http://dzitskiy.ru:5000/Auth/Register', user);
+  }
 }

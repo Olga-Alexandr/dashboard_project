@@ -11,7 +11,7 @@ export class AuthService {
   private _http = inject(HttpClient);
   public _headers = new HttpHeaders();
 
-  private userSubject = new BehaviorSubject<any>(null);
+  public userSubject = new BehaviorSubject<any>(null);
   user$ = this.userSubject.asObservable();
 
   constructor() {}
@@ -26,7 +26,9 @@ export class AuthService {
 
   _setUserAuth(token: string){
     this._headers = this._headers.set('Authorization', `Bearer ${token}`);
-    this.userSubject.next(this._http.get(`${this.apiUrl}/Users/current`, {headers: this._headers}));
+    this._http.get(`${this.apiUrl}/Users/current`, { headers: this._headers }).subscribe((user: any) => {
+      this.userSubject.next(user);
+    });
   }
 
   public logout(): void {
