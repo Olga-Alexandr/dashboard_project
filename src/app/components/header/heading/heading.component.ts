@@ -6,11 +6,12 @@ import { RegModalComponent } from '../../reg-modal/reg-modal.component';
 import { AuthService } from '../../../service/auth.service';
 import { ToggleHiddenService } from '../../../service/toggle-hidden.service';
 import { Subject } from 'rxjs/internal/Subject';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-heading',
   standalone: true,
-  imports: [ButtonComponent, AuthModalComponent, ModalFullComponent, RegModalComponent],
+  imports: [ButtonComponent, AuthModalComponent, ModalFullComponent, RegModalComponent, RouterLink],
   templateUrl: './heading.component.html',
   styleUrl: './heading.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush

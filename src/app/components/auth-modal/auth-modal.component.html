@@ -4,7 +4,7 @@
 </header>
 <form [formGroup]="authReactiveForm" (click)="onSubmit()">
   <div class="fields">
-    <input type="tel" placeholder="Номер телефона" formControlName="login" maxlength="16" appPhoneMask>
+    <input type="tel" placeholder="Номер телефона" formControlName="login" maxlength="16" appPhoneMask autofocus>
     <div class="input-message" [ngClass]="{'error': isControlInvalid('login')}">
       Введите номер в формате +7(999)999-99-99.
     </div>

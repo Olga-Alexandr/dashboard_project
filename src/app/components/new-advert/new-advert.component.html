@@ -1,0 +1,26 @@
+<h4>Новое объявление</h4>
+
+<form [formGroup]="form">
+  <div class="fields">
+    <input type="text" placeholder="Наименование" formControlName="name" minlength="4" maxlength="64">
+    <textarea  placeholder="Описание" formControlName="description" maxlength="256"></textarea>
+    
+    <input type="text" placeholder="Фото" formControlName="imagesIds" minlength="0" maxlength="128">
+    <input type="number" placeholder="Стоимость" formControlName="cost" min="0" max="1000000000">
+    <input type="email" placeholder="Электронная почта" formControlName="email" maxlength="64">
+    <input type="tel" placeholder="Номер телефона" formControlName="phone" maxlength="16" appPhoneMask>
+    <div class="input-message" [ngClass]="{'error': isControlInvalid('phone')}">
+      Введите номер в формате +7(999)999-99-99.
+    </div>
+    <input type="text" placeholder="Адрес" formControlName="location" minlength="4" maxlength="64">
+    <div class="input-message" [ngClass]="{'error': isControlInvalid('location')}">
+      Введите от 4-х до 64 символов. Можно использовать только буквы и цифры.
+    </div>
+    <select name="categories" placeholder="Категория" formControlName="categoryId">
+      @for (category of categories$ | async; track category.id) {
+        <option [value]="category.id">{{category.name}}</option>
+      }
+    </select>
+  </div>
+  <app-button label="Опубликовать" (click)="onSubmit()" fontStyle = 'var(--font-regular-normal)' padding="12px 40px" maxWidth="max-content"></app-button>
+</form>

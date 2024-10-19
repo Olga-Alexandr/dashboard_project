@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { AdvertCreate } from '../interfaces/advert-create';
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +13,12 @@ export class ApiService {
     return this._httpClient.get('http://dzitskiy.ru:5000/Categories');
   }
 
-  public createAdvert(model: AdvertCreate): Observable<any>{
+  public createAdvert(model: FormData): Observable<any>{
     return this._httpClient.post('http://dzitskiy.ru:5000/Advert', model);
+  }
+  
+  public getAdvertId(id: string): Observable<any>{
+    return this._httpClient.get(`http://dzitskiy.ru:5000/Advert/{${id}}`);
   }
 
   public regUser(user:{

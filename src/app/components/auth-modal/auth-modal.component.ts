@@ -56,13 +56,8 @@ export class AuthModalComponent implements OnInit, OnDestroy {
       //exit of method
       return;
     }
-    //TODO:send data from form, chek isUser and get token
-    this.authService.login(this.authReactiveForm.value
-      // {
-      // "login": this.authReactiveForm.value.login.replace(/^(\+7|8)[\- ]?|[\- ]/g, ''),
-      // "password": this.authReactiveForm.value.password
-      // }
-    )
+    //send data from form, get token and remember User 
+    this.authService.login(this.authReactiveForm.value)
       .pipe(
         tap(token => {
           localStorage.setItem('token', token as string);
@@ -70,17 +65,15 @@ export class AuthModalComponent implements OnInit, OnDestroy {
         })
       ).subscribe();
 
-    this.closeForm(['.modal-window', 'app-reg-modal']);
+    this.closeForm(['.modal-window', 'app-auth-modal']);
+
+    this.authReactiveForm.reset();
 
     // console.log(this.authReactiveForm.getRawValue());
-    // console.log({
-    //   "login": this.authReactiveForm.value.login.replace(/^(\+7|8)[\- ]?|[\- ]/g, ''),
-    //   "password": this.authReactiveForm.value.password
-    //   });
   }
 
   closeForm(selectors:string[]): void {
-    selectors.forEach(selector => this.toggleHiddenService.toggleHidden(selector));
+    selectors.forEach(selector => this.toggleHiddenService.toggleHidden(selector));    
   }
 
   ngOnDestroy(): void {

@@ -22,7 +22,7 @@ import { CurrentCategoryService } from '../../service/current-category.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SearchPageComponent implements OnInit, OnDestroy {
-  currentSearch: string = '';
+  public currentSearch: string = '';
   private destroy$ = new Subject<void>();
   products$!: Observable<Advert[]>;
   length = 0;
@@ -37,12 +37,12 @@ export class SearchPageComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.currentSearchService.currentSearch$
     .pipe(
-    combineLatestWith(this.currentCategoryService.currentCategory$),
-    takeUntil(this.destroy$),
-    switchMap(([search, category]) => {
-    this.currentSearch = search;
-    return this.filterProductsService.get();
-    })
+      combineLatestWith(this.currentCategoryService.currentCategory$),
+      takeUntil(this.destroy$),
+      switchMap(([search, category]) => {
+        this.currentSearch = search + " ";
+        return this.filterProductsService.get();
+      })
     )
     .subscribe((response: Advert[]) => {
       this.length = response.length;

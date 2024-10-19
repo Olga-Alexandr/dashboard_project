@@ -20,7 +20,6 @@ export class RegModalComponent implements OnInit, OnDestroy {
   regReactiveForm!: FormGroup;
   private destroy$ = new Subject<void>();
 
-
   constructor(private fb: FormBuilder, private toggleHiddenService:ToggleHiddenService, private apiService:ApiService){}
 
   ngOnInit(){
@@ -61,19 +60,15 @@ export class RegModalComponent implements OnInit, OnDestroy {
       //exit of method
       return;
     }
-    //TODO:send data from form
-    this.apiService.regUser({
-      "name": this.regReactiveForm.value.name,
-      "login": this.regReactiveForm.value.login.replace(/^(\+7|8)[\- ]?|[\- ]/g, ''),
-      "password": this.regReactiveForm.value.password
-      })
+    //send data from form
+    this.apiService.regUser(this.regReactiveForm.value)
       .pipe(
         tap(response => {
           console.log(response);
         })
       ).subscribe();
 
-    console.log(this.regReactiveForm.value);
+    // console.log(this.regReactiveForm.value);
 
     this.closeForm(['.modal-window', 'app-reg-modal']);
   }

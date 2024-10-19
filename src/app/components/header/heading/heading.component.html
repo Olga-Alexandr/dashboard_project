@@ -3,19 +3,19 @@
     @if (!userRole) {
       <app-button label="Войти" (click)="toggleHiddenService.toggleHidden('nav')" iconLeft="pi pi-user" colorClass = "color-none" padding = "8px 0" gap = "8px" max-width = "70px" fontStyle = 'var(--font-small-normal)'></app-button>
       <nav class="entry hidden" (click)="toggleHiddenService.toggleHidden('nav')">
-        <p (click)="showDialog('signup')" value="signup">Регистрация</p>
-        <p (click)="showDialog('login')" value="login">Авторизация</p>
+        <a (click)="showDialog('signup')" value="signup">Регистрация</a>
+        <a (click)="showDialog('login')" value="login">Авторизация</a>
       </nav>
     } @else {
         <app-button label="{{userName}}" (click)="toggleHiddenService.toggleHidden('nav')" iconLeft="pi pi-user" iconRight="pi pi-angle-down" colorClass = "color-none" padding = "8px 0" gap = "8px" max-width = "70px" fontStyle = 'var(--font-small-normal)'></app-button>
         <nav class="navPA hidden" (click)="toggleHiddenService.toggleHidden('nav')">
-          <p value="myAdds">Мои объявления</p>
-          <p value="settings">Настройки</p>
-          <p value="exit" (click)="authService.logout()">Выход</p>
+          <a value="myAdds" routerLink="/my-adverts">Мои объявления</a>
+          <a value="settings" routerLink="/settings">Настройки</a>
+          <a value="exit" (click)="authService.logout()">Выход</a>
         </nav>
       }
   </div>
-  <app-button label="Новое объявление" iconRight="pi pi-plus" padding = "6px 12px" max-width = "179px"></app-button>
+  <app-button label="Новое объявление" [routerLink]="['/new-advert']" iconRight="pi pi-plus" padding = "6px 12px" max-width = "179px"></app-button>
 </div>
 <app-modal-full>
   <app-auth-modal class="hidden"></app-auth-modal>

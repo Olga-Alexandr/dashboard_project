@@ -1,7 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { DataUser } from '../interfaces/data-user';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +12,7 @@ export class AuthService {
 
   public userSubject = new BehaviorSubject<any>(null);
   user$ = this.userSubject.asObservable();
+  static user$: any;
 
   constructor() {}
 

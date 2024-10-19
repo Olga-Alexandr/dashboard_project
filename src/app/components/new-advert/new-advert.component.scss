@@ -1,0 +1,51 @@
+header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--text);
+  & span{
+    padding-bottom: 24px;
+    cursor: pointer;    
+  }
+}
+form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  font: var(--font-regular-normal);
+  color: var(--text);
+  
+}
+.fields{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: 16px;
+}
+input, textarea, select{
+  width: inherit;
+  padding: 12px;
+  border: 1px solid var(--forms-border);
+  border-radius: 4px;
+  font: var(--font-regular-normal);
+  color: var(--text);
+  &:hover{
+    border-color: var(--primary);
+  }
+  &::placeholder{
+    color: var(--secondary-text);
+  }
+  &.ng-touched.ng-invalid{
+    border-color: var(--danger-text);
+  }
+}
+.input-message{
+  margin-top: -16px;
+  font: var(--font-small-normal);
+  color: var(--secondary-text);
+}
+.error{
+  color: var(--danger-text);
+}
